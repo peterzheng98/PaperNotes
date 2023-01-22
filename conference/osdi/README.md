@@ -1,6 +1,6 @@
 # 📖 OSDI
 
 ## Full
-- [\[OSDI 2022\] Application Informed Kernel Synchronization Primitives](../conference/osdi/park.md)
+- [\[OSDI 2022\] Application Informed Kernel Synchronization Primitives](park.md)
 
 ## Not Ready
