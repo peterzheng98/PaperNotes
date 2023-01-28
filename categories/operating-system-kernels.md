@@ -6,7 +6,27 @@
 ## \[Oakland 2023\] μSWITCH: Fast Kernel Context Isolation with Implicit Context Switches
 作者：Dinglan Peng∗, Congyu Liu∗, Tapti Palit∗, Pedro Fonseca∗, Anjo Vahldiek-Oberwagner†, Mona Vij†；∗Purdue University，†Intel Labs
 
+### 描述
+- 隔离程序是一种保护敏感数据的方法，先前工作主要聚焦于提出新的内核抽象、CPU的新指令集（MPK）、基于软件的错误隔离（WebAssembly）。这些工作忽略了高上下文切换或共享内核资源场景下的性能开销。
+- 本文主要关注通过细粒度domain设计的**内核资源隔离**，该隔离仍然可以保证安全性。
+- 减少上下文切换的方法：允许用户态的切换而非trap进入内核（使用MPK切换权限），真正内核资源的切换由下一次syscall的时候完成。
 
+### Key Points: 将Context Switch转化为用户态的切换
+- 由于原来Context隔离依赖于进程抽象，必须上下文切换。现在可以通过一个uContext将多个Context运行在一个process中实现intra-context切换。（Fig 2）
+- 额外增加一个Context Descriptor用于表达Context，并且直接通过memory sharing的方法在用户态和内核共享。每个Context Descriptor都代表了一组Kernel Resources。
+- 真正进入内核的时候检查内核的Context Descriptor是否与用户态一致（一致说明用户态没有切换过，不一致说明切换过，Fig 4）。
+
+### 核心
+- **减少上下文切换如何实现？**Context之间的切换不进入内核，只有真正的syscall时才进入内核。
+- **核心Insight**：1. 对内核资源的访问一定需要一次syscall。2. 对内核资源的切换在每次context切换的时候不是必须的，只需要在真正访问到内核资源的时候才需要切换/检查。（纤程思想？）
+
+### 威胁模型
+- 内核安全，App不安全
+- 内核中不包括直接泄露信息给App的代码，不违反µSwitch的安全保证。
+- 不考虑侧信道
+
+### 思考
+- 主要方法似乎和协程接近，如何保护内存？保护CPU？
 
 ## \[APSys 2022\] Towards Isolated Execution at the Machine Level
 作者：Shu Anzai, The University of Tokyo; Masanori Misono, Technical University of Munich; Ryo Nakamura, Yohei Kuga, and Takahiro Shinagawa, The University of Tokyo
