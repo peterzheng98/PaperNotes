@@ -6,6 +6,7 @@
 
 * [📦 Operating System Kernels](categories/operating-system-kernels.md)
 * [🔐 Locks and Synchorization Primitives](categories/locks-and-synchorization-primitives.md)
+* [🥇 Machine Learning](categories/machine-learning.md)
 
 ## Conference
 
