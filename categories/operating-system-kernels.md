@@ -26,8 +26,7 @@
 - 不考虑侧信道
 
 ### 思考
-- 主要方法似乎和协程接近，如何保护内存？保护CPU？
-- Context之间切换如果不进入内核，内存是否还是共享的？
+- 主要方法似乎和协程接近，如何保护控制流的完整性？
 
 ## \[APSys 2022\] Towards Isolated Execution at the Machine Level
 作者：Shu Anzai, The University of Tokyo; Masanori Misono, Technical University of Munich; Ryo Nakamura, Yohei Kuga, and Takahiro Shinagawa, The University of Tokyo
