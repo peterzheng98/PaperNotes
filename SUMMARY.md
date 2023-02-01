@@ -14,3 +14,4 @@
   * [Application Informed Kernel Synchronization Primitives](conference/osdi/park.md)
 * [📎 SOSP](conference/sosp/README.md)
   * [Page 2](conference/sosp/page-2.md)
+* [🚀 NSDI](conference/nsdi.md)
