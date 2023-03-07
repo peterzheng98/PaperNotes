@@ -80,6 +80,18 @@ Tag：Neo、NeoEX
 结果：在128张A100的GPU + 16个网络节点的组合提高了40倍训练速度。
 
 ## \[ACM Measure 23\] DaeMon: Architectural Support for Efficient Data Movement in Fully Disaggregated Systems
+Tag：DaeMon
 作者： Christina Giannoula, Kailong Huang, Jonathan Tang, Nectarios Koziris, Georgios Goumas, Zeshan Chishti, Nandita Vijaykumar
 单位：University of Toronto
+
+Key Takeaways:
+- 在Disaggreated System上，远程内存的搬运开销非常大。
+- 设计了Daemon利用专用引擎实现了对上层软件透明的计算，实现了自适应的粒度配置（基于带宽切分、链路压缩和数据搬运解耦）
+- 效果：与页粒度的搬运相比获得了2.39x和3.06x的数据移动加速。
+
+关键技术：
+- 把数据迁移offload给专用硬件引擎处理。
+- 优先考虑缓存行级别的数据移动，利用硬件链接压缩（把多个缓存行的访问压缩成一个page）来减少网络带宽消耗并减轻排队延迟。
+
+
 
