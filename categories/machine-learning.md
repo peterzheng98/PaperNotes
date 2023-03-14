@@ -93,5 +93,4 @@ Key Takeaways:
 - 把数据迁移offload给专用硬件引擎处理。
 - 优先考虑缓存行级别的数据移动，利用硬件链接压缩（把多个缓存行的访问压缩成一个page）来减少网络带宽消耗并减轻排队延迟。
 
-
-
+## \[SoCC 21\] Morphling: Fast, Near-Optimal Auto-Configuration for Cloud-Native Model Serving
