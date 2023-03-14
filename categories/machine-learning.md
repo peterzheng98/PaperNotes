@@ -94,3 +94,16 @@ Key Takeaways:
 - 优先考虑缓存行级别的数据移动，利用硬件链接压缩（把多个缓存行的访问压缩成一个page）来减少网络带宽消耗并减轻排队延迟。
 
 ## \[SoCC 21\] Morphling: Fast, Near-Optimal Auto-Configuration for Cloud-Native Model Serving
+Tag: Morphling
+作者：Luping Wang, Lingyun Yang, Yinghao Yu, Wei Wang, Bo Li, Xianchao Sun, Jian He, Liping Zhang
+单位：阿里
+
+现在机器学习中如何配置硬件指标（GPU类型、GPU内存和Batch_size）对提高模型效率有非常重要的作用。现有的方法大多采用贝叶斯优化和白盒预测，造成效率低下，并且这些方法主要遵循开发人员给出的规范。本文提出了Morphling，一种针对cloud-native的模型参数自动配置服务。效果可以提升3x-22x的搜索成本。
+
+Key Takeaways:
+- 不同CPU核心数量、GPU显存和Batch size的配置会对Throughput产生影响。
+- 设计了一个少样本学习算法感知任务的属性（强化学习的想法），Morphling 通过在包含 720 个选项的大型搜索空间中抽取不到 5% 的样本来快速识别最佳配置。
+
+技术和效果：
+- 设计了一套框架用于感知任务的属性，搜索空间选择离散的指标搜索。
+- 对新任务可以有非常快的适配，实现只需要小样本即可高效分析的特点。
